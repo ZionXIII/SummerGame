@@ -1,6 +1,7 @@
 # Random Character Character Creator
 
-import random
+import random, Class_module.py
+from Class_module.local import Game_Character
 
 
 Class_dict = {'Pit Fighter':(290, , 50, 30, 5, 'Trident', 'Crowd Pleasing', 'Net', 'Rough Play'),
@@ -59,7 +60,7 @@ Faults_dict = {'Weak of Heart':('speed','health'),
                'Hotheaded':(),
                'Thrill Seeking':(),
                'Depressed':(),
-               'Incompetent':(),
+               'Inco[mpetent':(),
                'Mad':(), # mad mad mad world
                'Hateful':(),
                'Unintelligent':()}
@@ -73,14 +74,17 @@ def seed_gen():
     return seed
 
 def ability_Draft():
+    
     return False
 
 def history_gen():
+    
     return False
 
 
 def main(Class_dict, History_dict, Group_dict, Ability_dict, Aspirations_dict, Faults_dict):
-    char_seed = 
+    char_seed = seed_gen()
+    
     return False
 
 
