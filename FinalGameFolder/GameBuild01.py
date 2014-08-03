@@ -26,8 +26,11 @@ CAM_MOVE_SPEED = 5 # how many pixels per frame the camera moves.
 # COLORS      R    G    B
 WHITE      = (255, 255, 255)
 BLACK      = (0  ,   0,   0)
-BURLY WOOD = (222, 184, 135)
-GRAY       = (128, 128, 128)
+BURLYWOOD = (222, 184, 135)
+GREY       = (128, 128, 128)
+LIGHTGREY =  (190, 190, 190)
+
+BGCOLOR = LIGHTGREY
 
 UP = 'up'
 DOWN =  'down'
@@ -43,8 +46,16 @@ def main():
 
     DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT))
 
+    mousex = 0
+    mousey = 0
+
+    mouseSelection = None
+
     pygame.display.set_caption('Frantic! Frantic! Tactics')
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+
+    DISPLAYSURF.fill(BGCOLOR)
+
 
     # A global dict value that will contain all the Pygame
     # Surface objects returned by pygame.image.load().
@@ -77,12 +88,28 @@ def main():
 
     startScreen() # show the title screen until the user takes action.
 
+    player_one_team = team_creator()
+    player_two_team = team_creator()
+    
     while True: # main game loop
-        player_one_team = team_creator()
-        player_two_team = team_creator()
-        
+        mouse_clicked = False
+
+        DISPLAYSURF.fill(BGCOLOR) # Drawing the window
+        drawboard()
+
+        for event in pygame.event.get(): # Event handlng loop
+            if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
+                pygame.quit()
+                sys.exit()
+            elif event.type == MOUSEMOTION:
+                mousex, mousey = event.pos
+            elif event.type == MOUSEBUTTONUP:
+                mousex, mousey = event.pos
+                mouseClicked = True
+
         
 
+            
 def startScreen(): # Shows intructions for two players, ends when player clicks.
     return False
 
@@ -93,3 +120,6 @@ def team_create():
         team_list.append(char)
     return team_list # Will return team as tuple of dictionaries.
 
+def menus(mouse_selection):
+    
+    return menu_selection
